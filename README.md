@@ -228,10 +228,10 @@ Both the frontend and backend are prepared for cloud hosting with full database 
 
 | S.No. | Full Name | Registration / Roll Number | Role / Contribution |
 | :---: | :--- | :---: | :--- |
-| 1. | **Lakshmi Narayana** | *(Enter Registration Number)* | Full Stack Developer & UI/UX Design |
-| 2. | **[Team Member 2 Name]** | *(Enter Registration Number)* | Frontend & PDF Generation Logic |
-| 3. | **[Team Member 3 Name]** | *(Enter Registration Number)* | Backend & Database Integration |
-| 4. | **[Team Member 4 Name]** | *(Enter Registration Number)* | Testing, Validation & Documentation |
+| 1. | **Lakshmi Narayana** | *241FA04D07* | Full Stack Developer & UI/UX Design |
+| 2. | **Sudharashan** | *241FA04C74* | Frontend & PDF Generation Logic |
+| 3. | **Teja** | *241FA04A64* | Backend & Database Integration |
+
 
 *(Team members can update their respective names and registration numbers in the table above before final submission).*
 
