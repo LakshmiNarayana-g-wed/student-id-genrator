@@ -5,6 +5,7 @@
 ---
 
 ## 📌 Table of Contents
+
 - [Project Description](#-project-description)
 - [Objectives](#-objectives)
 - [Technologies Used](#-technologies-used)
@@ -19,7 +20,7 @@
 
 ## 📖 Project Description
 
-The **Student ID Card Generator** is a comprehensive, responsive, and web-based application engineered to modernize and streamline the process of issuing official identification cards for educational institutions, colleges, universities, and corporate campuses. In conventional institutional environments, creating and printing ID cards is often a disjointed, error-prone, and time-consuming task requiring specialized design software, manual photo cropping, and back-and-forth communication between administrative departments. 
+The **Student ID Card Generator** is a comprehensive, responsive, and web-based application engineered to modernize and streamline the process of issuing official identification cards for educational institutions, colleges, universities, and corporate campuses. In conventional institutional environments, creating and printing ID cards is often a disjointed, error-prone, and time-consuming task requiring specialized design software, manual photo cropping, and back-and-forth communication between administrative departments.
 
 This platform resolves these operational bottlenecks by providing an all-in-one digital workspace where administrators, students, and staff can enter detailed credentials, configure institutional themes, upload official photographs and digital signatures, and observe instantaneous, high-fidelity double-sided live previews. Supporting horizontal and vertical orientations alongside multiple refined layout templates—such as Modern, Classic, Minimal, Vanguard Split, Metro Lanyard, and Oxford Crest—the generator automatically formats data into industry-standard ID dimensions. Crucially, each card integrates a dynamically generated scannable QR code encoding critical verification credentials to ensure anti-counterfeiting and rapid identity authentication. With instant one-click exports to high-resolution PNG images and print-ready vector PDF documents, the application provides an enterprise-ready solution for modern educational identity management.
 
@@ -39,40 +40,44 @@ This platform resolves these operational bottlenecks by providing an all-in-one 
 ## 🛠️ Technologies Used
 
 ### **Frontend & User Interface**
+
 - **React 19**: Modern UI component library for building reactive, component-driven user interfaces.
-- **TypeScript**: Statically typed JavaScript for robust code quality, maintainability, and error reduction.
+- **JavaScript (ESNext / JSX)**: Standard, type-free JavaScript and JSX for clean, flexible React development.
+- **Vite**: Next-generation lightning-fast frontend development and build tooling.
 - **Tailwind CSS (v4)**: Modern utility-first CSS framework providing responsive, sleek, and accessible styling.
 - **Radix UI**: Accessible, unstyled UI primitives powering custom dialogs, dropdowns, forms, and tabs.
 - **Lucide React**: Clean, lightweight icon suite for modern UI actions and badges.
 
-### **Routing & SSR Architecture**
-- **TanStack Start & TanStack Router**: Type-safe fullstack React framework supporting SSR, file-based routing, and high-performance client navigation.
-- **Nitro**: Ultra-fast web server foundation powering SSR capabilities and cross-platform deployment.
-
 ### **Document & Graphic Processing**
+
 - **`jspdf`**: Client-side vector PDF generation calibrated to physical CR80 card dimensions (85.6mm × 54mm).
 - **`html-to-image`**: High-DPI DOM canvas rendering for crisp PNG downloads.
 - **`qrcode.react`**: Vector SVG-based dynamic QR code generator for embedded authentication metadata.
 
 ### **Database & Backend Connectivity**
+
 - **Node.js**: Asynchronous event-driven JavaScript runtime environment for backend logic.
-- **MongoDB & Mongoose** *(Database Layer)*: NoSQL document database used for storing student records, institutional settings, and verification logs.
+- **Express**: Lightweight web framework powering the REST API endpoints.
+- **MongoDB & Mongoose** _(Database Layer)_: NoSQL document database used for storing student records, institutional settings, and verification logs.
 
 ---
 
 ## ✨ Features and Functionalities
 
 ### 1. Multi-Role ID Generation
+
 - **Student ID**: Captures Student Name, Registration Number, Department/Branch, Year, Section, DOB, Blood Group, Contact Info, and Emergency Contacts.
 - **Faculty ID**: Captures Faculty Name, Faculty ID Number, Department, and Designation.
 - **Staff ID**: Dedicated layout and fields tailored for administrative and campus support staff.
 
 ### 2. Live Interactive Dual-Sided Preview
+
 - **Real-Time Data Binding**: Instant updates to typography and details as form values are entered.
 - **Double-Sided Views**: Seamless one-click switching between **Front** (photo, badges, details, QR code) and **Back** (college address, terms & conditions, emergency numbers, and official signatures).
 - **Dual Orientation**: Instant toggle between **Horizontal (Landscape)** and **Vertical (Portrait)** layouts.
 
 ### 3. Dynamic QR Code Authentication
+
 - Automatically generates a scannable vector QR code encoded with:
   - Student Name
   - Registration Number
@@ -81,11 +86,13 @@ This platform resolves these operational bottlenecks by providing an all-in-one 
 - Allows campus security or admissions staff to verify identity with any standard mobile camera or scanner.
 
 ### 4. Rich Media Uploads & Image Processing
+
 - **Student/Staff Portrait**: Upload profile image with client-side format and file-size validation (<5 MB, JPEG/PNG).
 - **College Logo**: Add custom institutional crests and insignias.
 - **Dual Signature Verification**: Dedicated upload slots for Authorized Signatory and Head of Department (HOD) signatures.
 
 ### 5. Multi-Template & Custom Branding Engine
+
 - 6 professionally styled aesthetic presets:
   - **Modern**: Bold accents, clean typography, and dual-tone layout.
   - **Classic**: Traditional formal institutional format.
@@ -96,6 +103,7 @@ This platform resolves these operational bottlenecks by providing an all-in-one 
 - **Custom Color Palette**: Preset quick swatches (Royal Blue, Emerald, Purple, Crimson, Charcoal) plus a native HEX color picker for exact institutional branding.
 
 ### 6. One-Click Print & Export
+
 - **Download as PNG**: Exports high-resolution 3x pixel-ratio raster images for web sharing.
 - **Download as PDF**: Generates standard CR80 physical-dimensioned PDF documents ready for industrial PVC card printers.
 - **Direct Browser Print**: Integrated print stylesheet allowing direct hardcopy printing without formatting shifts.
@@ -106,29 +114,28 @@ This platform resolves these operational bottlenecks by providing an all-in-one 
 
 ```text
 student-id-card-generator/
+├── backend/                      # Node.js + Express backend & MongoDB models
+│   ├── config/db.js              # MongoDB Mongoose connection handler
+│   ├── models/Student.js         # Student schema and validation
+│   ├── routes/studentRoutes.js   # REST API route endpoints
+│   └── server.js                 # Express server bootstrap
 ├── public/                       # Static public assets
 │   ├── favicon.ico               # Application favicon
 │   ├── robots.txt                # Search engine crawler policies
 │   └── student-id-card-logo.png  # Application branding logo
 ├── src/
-│   ├── assets/                   # Application asset bundles
 │   ├── components/               # Modular React UI components
-│   │   ├── ui/                   # Reusable Radix UI & Tailwind component library
-│   │   └── id-card-generator.tsx # Core ID card generator, preview & export engine
-│   ├── hooks/                    # Reusable React hooks (useMobile, etc.)
-│   ├── lib/                      # Helper utilities, Tailwind merge, error reporting
-│   ├── routes/                   # TanStack file-based routing
-│   │   ├── __root.tsx            # Root layout wrapper
-│   │   └── index.tsx             # Primary generator application route
-│   ├── router.tsx                # Client router configuration
-│   ├── routeTree.gen.ts          # Auto-generated route tree
-│   ├── server.ts                 # Fullstack server entry & SSR handling
-│   ├── start.ts                  # TanStack Start framework initialization
+│   │   ├── ui/                   # Reusable Radix UI & Tailwind component library (.jsx)
+│   │   └── id-card-generator.jsx # Core ID card generator, preview & export engine
+│   ├── hooks/                    # Reusable React hooks (use-mobile.jsx)
+│   ├── lib/                      # Helper utilities (api.js, utils.js)
+│   ├── App.jsx                   # Root application React component
+│   ├── main.jsx                  # React DOM client entry point
 │   └── styles.css                # Global stylesheet and Tailwind custom classes
+├── index.html                    # Vite HTML entry point
 ├── components.json               # Shadcn/ui component schema configuration
 ├── package.json                  # Project dependencies and script declarations
-├── tsconfig.json                 # TypeScript compiler specifications
-├── vite.config.ts                # Vite bundler, plugins, and alias resolution
+├── vite.config.js                # Vite bundler, plugins, and alias resolution
 └── README.md                     # Project documentation and setup guide
 ```
 
@@ -139,24 +146,30 @@ student-id-card-generator/
 Follow these steps to run the application locally on your system:
 
 ### **1. Prerequisites**
+
 Ensure you have the following software installed on your machine:
+
 - **Node.js**: `v18.0.0` or higher ([Download Node.js](https://nodejs.org/))
 - **npm** (comes with Node.js) or **Bun** / **pnpm**
 - **Git**: ([Download Git](https://git-scm.com/))
 
 ### **2. Clone the Repository**
+
 ```bash
 git clone https://github.com/LakshmiNarayana-g-wed/student-id-genrator.git
 cd student-id-genrator
 ```
 
 ### **3. Install Project Dependencies**
+
 ```bash
 npm install
 ```
 
 ### **4. Configure Environment Variables (Optional)**
+
 Create a `.env` file in the root directory if configuring external backend services or database connections:
+
 ```env
 PORT=3000
 MONGODB_URI=mongodb+srv://<username>:<password>@cluster0.mongodb.net/student_id_db?retryWrites=true&w=majority
@@ -164,21 +177,27 @@ VITE_API_BASE_URL=http://localhost:3000
 ```
 
 ### **5. Run the Local Development Server**
+
 ```bash
 npm run dev
 ```
+
 Once the dev server starts, open your web browser and navigate to:
+
 ```
 http://localhost:3000
 ```
 
 ### **6. Build for Production**
+
 To generate an optimized production bundle:
+
 ```bash
 npm run build
 ```
 
 ### **7. Preview the Production Build**
+
 ```bash
 npm run preview
 ```
@@ -204,16 +223,17 @@ The application is structured for seamless fullstack integration with **MongoDB*
 
 Both the frontend and backend are prepared for cloud hosting with full database connectivity:
 
-| Deployment Component | Platform / Service | Status |
-| :--- | :--- | :--- |
-| **Frontend Application** | Vercel / Netlify / Render | 🟢 Deployed & Active |
-| **Backend / SSR Engine** | Node.js / Nitro Engine | 🟢 Deployed & Active |
-| **Database** | MongoDB Atlas Cloud Database | 🟢 Connected |
+| Deployment Component     | Platform / Service           | Status               |
+| :----------------------- | :--------------------------- | :------------------- |
+| **Frontend Application** | Vercel / Netlify / Render    | 🟢 Deployed & Active |
+| **Backend / SSR Engine** | Node.js / Nitro Engine       | 🟢 Deployed & Active |
+| **Database**             | MongoDB Atlas Cloud Database | 🟢 Connected         |
 
 🔗 **Public Live Deployment Link**:  
-👉 **[Click Here to Open Deployed Student ID Card Generator](https://student-id-genrator.vercel.app)** *(Replace with your final hosted URL)*
+👉 **[Click Here to Open Deployed Student ID Card Generator](https://student-id-genrator.vercel.app)** _(Replace with your final hosted URL)_
 
 ### **Post-Deployment Verification Checklist:**
+
 - [x] Application successfully loads in production browser environments.
 - [x] Live interactive card preview updates without lag or layout shifts.
 - [x] Photo, logo, and signature uploads render cleanly on both front and back sides.
@@ -232,10 +252,10 @@ Both the frontend and backend are prepared for cloud hosting with full database 
 | 2. | **Sudharashan** | *241FA04C74* | Frontend & PDF Generation Logic |
 | 3. | **Teja** | *241FA04A64* | Backend & Database Integration |
 
-
-*(Team members can update their respective names and registration numbers in the table above before final submission).*
+_(Team members can update their respective names and registration numbers in the table above before final submission)._
 
 ---
 
 ## 📄 License
+
 This project is developed for academic evaluation and institutional utility under the [MIT License](LICENSE).
